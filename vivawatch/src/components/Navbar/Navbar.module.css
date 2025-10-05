@@ -1,0 +1,42 @@
+.navbar {
+  background-color: #0a0f2d;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  
+}
+
+.navbarContainer { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;  
+}
+
+.link {
+  color: #a0a0a0;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.signupBtn {  
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 9em;
+  height: 3em;
+}
+
+.logo{
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.9em;
+}

@@ -1,0 +1,94 @@
+.pricing {
+  background-color: #0a0f2d;
+  padding: 80px 0;
+  text-align: center;
+  color: white;
+}
+
+.pricingContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #a0a0a0;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  color: #0a0f2d;
+  text-align: left;
+}
+
+.planName {
+  font-size: 24px;
+  color: #0a0f2d;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.price {
+  font-size: 36px;
+  color: #0a0f2d;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.perMonth {
+  font-size: 18px;
+  color: #6a6a6a;
+}
+
+.planSubtitle {
+  font-size: 16px;
+  color: #6a6a6a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.included {
+  color: #00cc99;
+}
+
+.notIncluded {
+  color: #a0a0a0;
+}
+
+.trialButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
