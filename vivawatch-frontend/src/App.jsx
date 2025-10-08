@@ -7,6 +7,7 @@ import Pricing from './components/Pricing/Pricing';
 import Footer from './components/Footer/Footer';
 import About from './components/About/About';
 import CustomerReviews from './components/CustomerReviews/CustomerReviews';
+import Timeline from './components/TimeLine/TimeLine';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Hero />
       <About/>
       <Features />
+      <Timeline />
       <CustomerReviews/>
       <Cards/>
       <Pricing/>
