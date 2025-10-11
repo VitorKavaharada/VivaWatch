@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.css';
+import { Link } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 
 const Navbar = () => {
@@ -11,10 +12,10 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.navbarContainer}>
         <div className={styles.links}>
-          <p className={styles.logo}>Viva Watch</p> {/* Mudar para o Link do react-router */}
+         <Link to='/' className={styles.logo}>Viva Watch</Link>
         </div>
         {isLoggedIn ? (
-          <button className={styles.signupBtn} onClick={() => { localStorage.removeItem('token'); setIsLoggedIn(false); window.location.reload(); }}>Logout</button>
+          <button className={styles.signupBtn} onClick={() => { localStorage.removeItem('token'); setIsLoggedIn(false); window.location.reload(); }}>Logout</button> //usar navigate ?
         ) : (
           <button className={styles.signupBtn} onClick={() => setShowAuth(true)}>Inscrever-se</button>
         )}
