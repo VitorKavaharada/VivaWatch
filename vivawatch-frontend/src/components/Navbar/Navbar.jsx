@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 
-const Navbar = () => {
-  const [showAuth, setShowAuth] = useState(false);
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+const Navbar = ({ isLoggedIn, onLoginStatusChange }) => {
+  const [showAuth, setShowAuth] = useState(false); 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      if (onLoginStatusChange) onLoginStatusChange(!!localStorage.getItem('token'));
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [onLoginStatusChange]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    if (onLoginStatusChange) onLoginStatusChange(false);
+    navigate('/');
+  };
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarContainer}>
         <div className={styles.links}>
-         <Link to='/' className={styles.logo}>Viva Watch</Link>
+          <p className={styles.logo}>Viva Watch</p>
         </div>
         {isLoggedIn ? (
-          <button className={styles.signupBtn} onClick={() => { localStorage.removeItem('token'); setIsLoggedIn(false); window.location.reload(); }}>Logout</button> //usar navigate ?
+          <button className={styles.signupBtn} onClick={handleLogout}>
+            Logout
+          </button>
         ) : (
-          <button className={styles.signupBtn} onClick={() => setShowAuth(true)}>Inscrever-se</button>
+          <button className={styles.signupBtn} onClick={() => setShowAuth(true)}>
+            Inscrever-se
+          </button>
         )}
+        {showAuth && <Auth onClose={() => setShowAuth(false)} onLoginStatusChange={onLoginStatusChange} />}
       </div>
-      {showAuth && <Auth onClose={() => setShowAuth(false)} />}
     </nav>
   );
 };
