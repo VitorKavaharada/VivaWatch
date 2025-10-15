@@ -11,6 +11,7 @@ import CustomerReviews from './components/CustomerReviews/CustomerReviews';
 import Timeline from './components/TimeLine/TimeLine';
 import Auth from './components/Auth/Auth';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Support from './components/Support/Support';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -34,6 +35,7 @@ function App() {
               <CustomerReviews />
               <Cards />
               <Pricing />
+              <Support/>
               <Footer />
             </>
           }
