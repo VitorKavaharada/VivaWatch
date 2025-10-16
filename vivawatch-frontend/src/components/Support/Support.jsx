@@ -15,17 +15,49 @@ const Support = () => {
   const [description, setDescription] = useState('');
   const [attachment, setAttachment] = useState(null);
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados do formulário:', { name, phone, email, category, description, attachment });
-    setMessage('Mensagem enviada com sucesso!');
-    setName('');
-    setPhone('');
-    setEmail('');
-    setCategory('duvida');
-    setDescription('');
-    setAttachment(null);
+    setLoading(true);
+    setMessage('');
+    setError('');
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('category', category);
+    formData.append('description', description);
+    if (attachment) {
+      formData.append('attachment', attachment);
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/send-support-email', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+        setName('');
+        setPhone('');
+        setEmail('');
+        setCategory('duvida');
+        setDescription('');
+        setAttachment(null);
+      } else {
+        setError(data.message || 'Erro ao enviar');
+      }
+    } catch (err) {
+      setError('Erro de rede. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleFileChange = (e) => {
@@ -139,8 +171,12 @@ const Support = () => {
                 Arquivos suportados: PDF, PNG, JPG (máx. 5MB)
               </small>
             </div>
-            <button type="submit" className={styles.submitButton}>Enviar Mensagem</button>
+            <button type="submit" className={styles.submitButton} disabled={loading}>
+              {loading ? 'Enviando...' : 'Enviar Mensagem'}
+            </button>
             {message && <p className={styles.successMessage}>{message}</p>}
+            {error && <p className={styles.errorMessage}>{error}</p>}
+            {loading && <p className={styles.loadingMessage}>Enviando...</p>}
           </form>
         </div>
       </div>
