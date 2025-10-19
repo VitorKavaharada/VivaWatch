@@ -172,3 +172,61 @@
   margin-bottom: 20px;
   color: #475569;
 }
+
+@media (max-width: 1024px) {
+
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "header"
+      "left"
+      "center"
+      "right";
+    height: auto;
+  }
+
+  .emergencyButton {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .leftColumn,.center,.rightColumn {
+    margin-bottom: 20px;
+  }
+
+  .center {
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .batteryStatus {
+    text-align: left;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .vitalTitle {
+    font-size: 14px;
+  }
+
+  .vitalData {
+    font-size: 14px;
+  }
+
+  .mapPlaceholder {
+    height: 150px;
+  }
+
+}
