@@ -13,6 +13,7 @@ import Auth from './components/Auth/Auth';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Support from './components/Support/Support';
 import Dashboard from './components/DashBoard/DashBoard';
+import Payment from './components/Payment/Payment';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -48,6 +49,7 @@ function App() {
         <Route path="/protected" element={<PrivateRoute />}>
           {/* Espaço para as rotas que vão ser protegidas*/}
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="payment" element={<Payment />} />
         </Route>
       </Routes>
     </BrowserRouter>
