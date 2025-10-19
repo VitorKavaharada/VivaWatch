@@ -32,7 +32,6 @@ function App() {
               <Hero />
               <About />
               <Features />
-              <Dashboard/>
               <Timeline />
               <CustomerReviews />
               <Cards />
@@ -48,6 +47,7 @@ function App() {
         />
         <Route path="/protected" element={<PrivateRoute />}>
           {/* Espaço para as rotas que vão ser protegidas*/}
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>

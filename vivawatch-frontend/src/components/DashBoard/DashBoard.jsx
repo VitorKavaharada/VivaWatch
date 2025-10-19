@@ -15,8 +15,8 @@ const heartRateData = [
 ];
 
 const activityData = [
-  {  id: 1, name: "Ativo", value: 40 },
-  {  id: 2, name: "Inativo", value: 60 },
+  {  id: 1, name: "Ativo", percent: 0.4 },
+  {  id: 2, name: "Inativo", percent: 0.6 },
 ];
 
 const fallsData = [
@@ -32,6 +32,10 @@ const fallsData = [
 const COLORSISACTIVE= ["#00C49F", "#FF8042"];
 
 const Dashboard = () => {
+
+ const renderLabel = ({ percent, name }) =>
+    `${name}: ${(percent * 100).toFixed(0)}%`;
+
   return (
     <div className={styles.dashboard}>
       {/* HEADER-nome, bateria */}
@@ -106,9 +110,9 @@ const Dashboard = () => {
                 data={activityData}
                 cx="50%"
                 cy="50%"
-                outerRadius={80}
-                dataKey="value"
-                label
+                outerRadius={67}
+                dataKey="percent"
+                label={renderLabel}
               >
                 {activityData.map((entry, index) => (
                   <Cell key={`cell-${entry.id}`} fill={COLORSISACTIVE[index]} />
