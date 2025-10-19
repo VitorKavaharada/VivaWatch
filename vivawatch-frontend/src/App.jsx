@@ -12,6 +12,7 @@ import Timeline from './components/TimeLine/TimeLine';
 import Auth from './components/Auth/Auth';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Support from './components/Support/Support';
+import Dashboard from './components/DashBoard/DashBoard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -31,6 +32,7 @@ function App() {
               <Hero />
               <About />
               <Features />
+              <Dashboard/>
               <Timeline />
               <CustomerReviews />
               <Cards />
