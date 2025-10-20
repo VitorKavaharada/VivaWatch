@@ -24,18 +24,19 @@ const Navbar = ({ isLoggedIn, onLoginStatusChange }) => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarContainer}>
-        <div className={styles.links}>
-          <p className={styles.logo}>Viva Watch</p>
+        <Link to="/" className={styles.logo}>Viva Watch</Link>
+        <div className={styles.navRight}>
+          {isLoggedIn && (
+            <>
+              <Link to="/" className={styles.link}>Home</Link>
+              <Link to="/protected/dashboard" className={styles.link}>Dashboard</Link>
+              <Link to="/protected/payment" className={styles.link}>Pagamento</Link>
+            </>
+          )}
+          <button className={styles.signupBtn} onClick={isLoggedIn ? handleLogout : () => setShowAuth(true)}>
+            {isLoggedIn ? 'Logout' : 'Inscrever-se'}
+          </button>
         </div>
-        {isLoggedIn ? (
-          <button className={styles.signupBtn} onClick={handleLogout}>
-            Logout
-          </button>
-        ) : (
-          <button className={styles.signupBtn} onClick={() => setShowAuth(true)}>
-            Inscrever-se
-          </button>
-        )}
         {showAuth && <Auth onClose={() => setShowAuth(false)} onLoginStatusChange={onLoginStatusChange} />}
       </div>
     </nav>
