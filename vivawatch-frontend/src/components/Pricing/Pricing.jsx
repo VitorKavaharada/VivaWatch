@@ -52,7 +52,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section className={styles.pricing}>
+    <section className={styles.pricing} id="pricing-section">
       <div className={styles.pricingContainer}>
         <h2 className={styles.title}>Preços Simples e Transparentes</h2>
         <p className={styles.subtitle}>

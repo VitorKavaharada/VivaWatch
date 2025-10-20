@@ -50,7 +50,7 @@ const Features = () => {
   ];
 
   return (
-    <section className={styles.features}>
+    <section className={styles.features} id='features-section'>
       <div className={styles.featuresContainer}>
         <div className={styles.grid}>
           {featureData.map((feature) => ( 
