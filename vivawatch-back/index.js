@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const multer = require('multer');
 
 require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const PORT = 5000;
@@ -48,7 +49,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  limits: { fileSize: 5 * 1024 * 1024 }, // igual a 5MB
   fileFilter: fileFilter
 });
 
@@ -135,6 +136,25 @@ app.post('/api/send-support-email', upload.single('attachment'), async (req, res
   } catch (error) {
     console.error('Erro ao enviar email:', error);
     res.status(500).json({ message: 'Erro ao enviar mensagem. Tente novamente.' });
+  }
+});
+
+//Configuração do Stripe versão SandBox
+app.post('/create-payment-intent', async (req, res) => {
+
+  const { amount, currency, plan,cpf } = req.body; 
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: currency || 'brl', 
+      metadata: { plan,cpf }, 
+    }); 
+
+    res.json({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error('Erro ao criar Payment Intent:', error);
+    res.status(500).json({ error: 'Erro ao processar pagamento' });
   }
 });
 
