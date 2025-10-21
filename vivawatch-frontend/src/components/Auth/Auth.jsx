@@ -11,7 +11,7 @@ const Auth = ({ onClose,onLoginStatusChange  }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = isSignup ? 'http://localhost:5000/signup' : 'http://localhost:5000/login';
+    const url = isSignup ? 'http://localhost:5000/api/signup' : 'http://localhost:5000/api/login';
 
     try {
       const res = await fetch(url, {
