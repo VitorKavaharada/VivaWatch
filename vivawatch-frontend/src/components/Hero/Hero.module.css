@@ -44,6 +44,10 @@
   cursor: pointer;
 }
 
+.primaryBtn:hover{
+  background-color: #0464ca;
+}
+
 .secondaryBtn {
   background-color: #4a4a4a;
   color: white;
@@ -51,6 +55,10 @@
   padding: 12px 24px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.secondaryBtn{
+  background-color: #3e3e3e;
 }
 
 .heroImage {

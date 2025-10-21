@@ -64,6 +64,18 @@ const Support = () => {
     setAttachment(e.target.files[0]);
   };
 
+  //funcao para formatar o cel
+  function formatPhoneNumber(value) {
+
+    const digits = value.replace(/\D/g, ''); 
+
+    if (digits.length <= 10) {
+      return digits.replace(/^(\d{2})(\d{0,4})(\d{0,4})$/, '($1) $2-$3');
+    } else {
+      return digits.replace(/^(\d{2})(\d{0,5})(\d{0,4})$/, '($1) $2-$3');
+    }
+  }
+
   return (
     <section className={styles.support}>
       <div className={styles.leftSide}>
@@ -96,8 +108,10 @@ const Support = () => {
                 <input
                   type="tel"
                   id="phone"
+                  placeholder='Celular com DDD'
+                  maxLength={15}
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
                   required
                 />
               </div>
