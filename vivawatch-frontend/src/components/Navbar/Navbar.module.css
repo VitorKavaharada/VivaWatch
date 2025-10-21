@@ -1,6 +1,6 @@
 .navbar {
-  background-color:  #0a0f2d;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #0a0f2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   padding: 10px 0;
   position: fixed;
   width: 100%;
@@ -8,13 +8,13 @@
   z-index: 10;
 }
 
-.navbarContainer { 
+.navbarContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;  
+  padding: 0 20px;
 }
 
 .logo {
@@ -27,7 +27,7 @@
 .navRight {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espaço entre links e botão */
+  gap: 20px;
 }
 
 .link {
@@ -36,24 +36,77 @@
   font-size: 1em;
   padding: 8px 12px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .link:hover {
   background-color: #1a1f3d;
 }
 
-.signupBtn {  
+.signupBtn {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  height: 3em;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .signupBtn:hover {
   background-color: #0056b3;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #e4e2e2;
+  transition: all 0.3s ease;
+  line-height: 1;
+  text-align: center;
+  font-size: 0; 
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    order: 2;
+  }
+
+  .navRight {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #0a0f2d;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden;
+  }
+
+  .navRight.active {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .link, .signupBtn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    margin: 5px 0;
+  }
 }
