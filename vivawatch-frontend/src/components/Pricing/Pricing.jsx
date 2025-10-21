@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from './Pricing.module.css';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
-const Pricing = () => {
+const Pricing = ({ isLoggedIn }) => {
+
+  const navigate = useNavigate();
 
   useEffect(() => {
       AOS.init({ duration: 1000 });
@@ -16,11 +20,11 @@ const Pricing = () => {
       price: 27,
       subtitle: 'Plano inicial para famílias pequenas.',
       features: [
-        { text: 'Detecção de quedas básica', included: true },
-        { text: 'Localização GPS', included: true },
-        { text: 'Monitoramento de saúde 24/7', included: false },
-        { text: 'Suporte prioritário', included: false },
-        { text: 'Integração com apps familiares', included: false },
+        { id:1, text: 'Detecção de quedas básica', included: true },
+        { id:2, text: 'Localização GPS', included: true },
+        { id:3, text: 'Monitoramento de saúde 24/7', included: false },
+        { id:4, text: 'Suporte prioritário', included: false },
+        { id:5, text: 'Integração com apps familiares', included: false },
       ],
     },
     {
@@ -29,11 +33,11 @@ const Pricing = () => {
       price: 47,
       subtitle: 'Mais recursos para cuidado completo.',
       features: [
-        { text: 'Detecção de quedas básica', included: true },
-        { text: 'Localização GPS', included: true },
-        { text: 'Monitoramento de saúde 24/7', included: true },
-        { text: 'Suporte prioritário', included: true },
-        { text: 'Integração com apps familiares', included: false },
+        { id:1, text: 'Detecção de quedas básica', included: true },
+        { id:2, text: 'Localização GPS', included: true },
+        { id:3, text: 'Monitoramento de saúde 24/7', included: true },
+        { id:4, text: 'Suporte prioritário', included: true },
+        { id:5, text: 'Integração com apps familiares', included: false },
       ],
     },
     {
@@ -42,14 +46,22 @@ const Pricing = () => {
       price: 67,
       subtitle: 'Para múltiplos usuários e personalização.',
       features: [
-        { text: 'Detecção de quedas básica', included: true },
-        { text: 'Localização GPS', included: true },
-        { text: 'Monitoramento de saúde 24/7', included: true },
-        { text: 'Suporte prioritário', included: true },
-        { text: 'Integração com apps familiares', included: true },
+        { id:1, text: 'Detecção de quedas básica', included: true },
+        { id:2, text: 'Localização GPS', included: true },
+        { id:3, text: 'Monitoramento de saúde 24/7', included: true },
+        { id:4, text: 'Suporte prioritário', included: true },
+        { id:5, text: 'Integração com apps familiares', included: true },
       ],
     },
   ];
+  //verifica se esta autenticado e redireciona
+  const handleLearnMore = () => {
+    if (isLoggedIn) {
+      navigate('/protected/payment');
+    } else {
+      navigate('/auth');
+    }
+  };
 
   return (
     <section className={styles.pricing} id="pricing-section">
@@ -60,20 +72,20 @@ const Pricing = () => {
         </p>
         <div className={styles.grid}>
           {plans.map((plan) => (
-            <div key={plan.id} className={styles.card} data-aos="fade-up">
+            <div key={plan.id} className={styles.card} data-aos="fade-up" >
               <h3 className={styles.planName}>{plan.name}</h3>
               <div className={styles.price}>
                 R${plan.price}<span className={styles.perMonth}>/m</span>
               </div>
               <p className={styles.planSubtitle}>{plan.subtitle}</p>
               <ul className={styles.featureList}>
-                {plan.features.map((feature, fIndex) => (
-                  <li key={fIndex} className={feature.included ? styles.included : styles.notIncluded}>
-                    {feature.included ? '✓' : '-'} {feature.text}
+                {plan.features.map((feature) => (
+                  <li key={feature.id} className={feature.included ? styles.included : styles.notIncluded}>
+                    {feature.included ?<FaCheckCircle/> : <FaTimesCircle/>} {feature.text}
                   </li>
                 ))}
               </ul>
-              <button className={styles.trialButton}>Saiba mais</button>
+              <button className={styles.trialButton} onClick={handleLearnMore}>Saiba mais</button>
             </div>
           ))}
         </div>

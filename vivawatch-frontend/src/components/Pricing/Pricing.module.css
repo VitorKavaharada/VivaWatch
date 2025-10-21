@@ -87,6 +87,10 @@
   font-size: 16px;
 }
 
+.trialButton:hover{
+  background-color: #0465cd;
+}
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;

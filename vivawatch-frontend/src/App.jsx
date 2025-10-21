@@ -36,7 +36,7 @@ function App() {
               <Timeline />
               <CustomerReviews />
               <Cards />
-              <Pricing />
+              <Pricing isLoggedIn={isLoggedIn} />
               <Support/>
               <Footer />
             </>
