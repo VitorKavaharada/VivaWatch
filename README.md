@@ -10,7 +10,7 @@ O **Viva Watch** é uma **Single Page Application (SPA)** desenvolvida para o mo
 - **Animações**: AOS (Animate on Scroll)
 
 ## Funcionalidades Atuais
-- Landing page  com seções: Hero, About (Missão/Valores/Visão), CustormersReviews, Features, Updates, Pricing e Footer.
+- Landing page  com seções: Hero, About (Missão/Valores/Visão), CustormersReviews, Features, Updates, Pricing, Support e Footer.
 - Autenticação simples (registro e login) via modal, com token salvo no localStorage.
 - Integração frontend-backend com API REST básica.
 
@@ -31,7 +31,7 @@ Esta é uma versão inicial do projeto, funcionando como um MVP. As funcionalida
 
 **Novos Componentes**
 - Suporte Técnico: Layout com envio de e-mails via Nodemailer.
-- Dashboard: Interface protegida para usuários autenticados.
+- Dashboard: Interface protegida para usuários autenticados. (Atualmente os dados são estáticos).
 - Pagamento: Formulário com integração inicial ao Stripe.
 
 ### Planos Futuros
@@ -46,19 +46,21 @@ Esta é uma versão inicial do projeto, funcionando como um MVP. As funcionalida
    - Node.js (v14 ou superior)
    - MySQL (configurado com banco `viva_watch_db`)
    - Clone o repositório: `git clone https://github.com/VitorKavaharada/VivaWatch.git`
-   - Crie uma conta gratuita no ambiente de testes (Sandbox) da plataforma Stripe: https://dashboard.stripe.com/register 
+   - Crie uma conta gratuita no ambiente de testes (Sandbox) da plataforma Stripe: https://dashboard.stripe.com/register
+   - Crie uma senha de app no gmail
 
-2. **Backend**:
+2. **Banco de Dados**:
+   - Crie o banco de dados com o mesmo nome usado no arquivo .env na variável DB_NAME.
+
+3. **Backend**:
    - Acesse a pasta `backend`: `cd backend`
    - Instale as dependências: `npm install`
-   - Configure o `.env` com credenciais MySQL, a chave JWT, variáveis do nodemailer e chave pública do Stripe
+   - Crie e configure o `.env` com credenciais MySQL, a chave JWT, variáveis do nodemailer e chave pública do Stripe baseado no arquivo .env.example
    - Inicie o servidor: `npm start `
 
-3. **Frontend**:
+4. **Frontend**:
    - Acesse a pasta `frontend`: `cd frontend`
    - Instale as dependências: `npm install`
-   - Configure o `.env` com  a chave pública do Stripe
+   - Crie e configure o `.env` com  a chave pública do Stripe  baseado no arquivo .env.example
    - Inicie a aplicação: `npm run dev`
 
-4. **Banco de Dados**:
-   - Crie o banco de dados com o mesmo nome usado no arquivo .env na variável DB_NAME.
