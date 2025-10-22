@@ -1,7 +1,7 @@
 # Viva Watch 
 
 ## Descrição
-Este projeto é uma landing page desenvolvida para o **Viva Watch**, um relógio inteligente fictício projetado para monitoramento de idosos, com foco em segurança na detecção de quedas. A página é uma **versão inicial** em desenvolvimento, criada como um projeto integrador para a disciplina **Desenvolvimento Web, Experiência do Usuário e Internet das Coisas e Aplicações** 
+O **Viva Watch** é uma **Single Page Application (SPA)** desenvolvida para o monitoramento de idosos, com foco em segurança e detecção de quedas. O projeto inclui uma **landing page** como ponto de entrada, apresentando o produto com seções como Hero, About, Features, Pricing e Footer, e evolui para um sistema interativo com navegação dinâmica (via React Router), autenticação (JWT) e um dashboard para usuários autenticados. Esta é uma **versão inicial** em desenvolvimento, criada como projeto integrador para a disciplina **Desenvolvimento Web, Experiência do Usuário e Internet das Coisas e Aplicações**. 
 
 ## Tecnologias Utilizadas
 - **Frontend**: React (com Vite) e CSS Modules
@@ -18,10 +18,27 @@ Este projeto é uma landing page desenvolvida para o **Viva Watch**, um relógio
 **Versão Inicial - Em Desenvolvimento**  
 Esta é uma versão inicial do projeto, funcionando como um MVP. As funcionalidades estão em fase de teste e aprimoramento. Algumas áreas ainda estão em construção, e novos componentes serão adicionados ao longo do tempo.
 
+### Melhorias adicionadas:
+
+**Navegação e Autenticação**
+- Implementada navegação SPA com React Router (BrowserRouter, Routes, Route).
+- Rotas públicas (/auth) e protegidas (/protected) com PrivateRoute.
+- Estado de autenticação (isLoggedIn) centralizado para controle global.
+
+**Refatoração do Backend**
+- Adoção do padrão MVC com Sequelize.
+- Separação de responsabilidades antes concentradas no index.js
+
+**Novos Componentes**
+- Suporte Técnico: Layout com envio de e-mails via Nodemailer.
+- Dashboard: Interface protegida para usuários autenticados.
+- Pagamento: Formulário com integração inicial ao Stripe.
+
 ### Planos Futuros
-- Implementação do **React Router** para navegação entre páginas (ex.: dashboard pós-autenticação).
-- Adição de novos componentes, como suporte técnico e formulário de compra.
-- Expansão de rotas protegidas (ex.: áreas exclusivas para usuários logados).
+- Stripe Subscriptions: Migração para planos recorrentes (Básico, Premium, Enterprise) com webhooks.
+- Perfil do Idoso: Componente  para coleta de dados sensíveis pós-pagamento.
+- Dashboard Dinâmico: Visualização de dados de sensores (quedas, passos, batimentos) por meio integração IoT.
+- Notificações por Email: Confirmações de pagamento, alertas de queda e recibos mensais via Nodemailer.
 - Melhorias na experiência do usuário (UX)
 
 ## Como Executar o Projeto
@@ -29,17 +46,19 @@ Esta é uma versão inicial do projeto, funcionando como um MVP. As funcionalida
    - Node.js (v14 ou superior)
    - MySQL (configurado com banco `viva_watch_db`)
    - Clone o repositório: `git clone https://github.com/VitorKavaharada/VivaWatch.git`
+   - Crie uma conta gratuita no ambiente de testes (Sandbox) da plataforma Stripe: https://dashboard.stripe.com/register 
 
 2. **Backend**:
    - Acesse a pasta `backend`: `cd backend`
    - Instale as dependências: `npm install`
-   - Configure o `.env` com credenciais MySQL e a chave JWT 
-   - Inicie o servidor: `node index.js`
+   - Configure o `.env` com credenciais MySQL, a chave JWT, variáveis do nodemailer e chave pública do Stripe
+   - Inicie o servidor: `npm start `
 
 3. **Frontend**:
    - Acesse a pasta `frontend`: `cd frontend`
    - Instale as dependências: `npm install`
+   - Configure o `.env` com  a chave pública do Stripe
    - Inicie a aplicação: `npm run dev`
 
 4. **Banco de Dados**:
-   - Crie a tabela `users` no MySQL com os campos `id`, `email` (único) e `password`.
+   - Crie o banco de dados com o mesmo nome usado no arquivo .env na variável DB_NAME.
