@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6A7F9B, hsl(241, 70%, 39%));
+}
+
+.formContainer {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  margin-top: 4em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+.inputGroup input:focus {
+  border-color: #A8A6FF;
+  outline: none;
+}
+
+.btnRegister {
+  width: 100%;
+  padding: 10px;
+  background: #090781;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btnRegister:hover {
+  background: #6A7F9B;
+}
+
+.socialLogin {
+  margin-top: 20px;
+}
+
+.socialLogin p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.socialIcons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.socialIcons a.facebook {
+  background: #3b5998;
+}
+
+.socialIcons a.google {
+  background: #db4437;
+}
+
+.socialIcons a:hover {
+  opacity: 0.8;
+}
+
+.loginLink {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.loginLink a {
+  color: #A8A6FF;
+  text-decoration: none;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 14px;
+  color: red;
+}
