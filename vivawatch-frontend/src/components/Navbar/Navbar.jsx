@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import Auth from '../Auth/Auth';
 
 const Navbar = ({ isLoggedIn, onLoginStatusChange }) => {
-  const [showAuth, setShowAuth] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -23,16 +21,12 @@ const Navbar = ({ isLoggedIn, onLoginStatusChange }) => {
     setIsMenuOpen(false);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarContainer}>
         <Link to="/" className={styles.logo}>Viva Watch</Link>
-        <button className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`} onClick={toggleMenu}>
-          <span className={styles.hamburgerLine}>---</span>
+        <button className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <span className={styles.hamburgerLine}>---</span> {/* Trocar depois por um icone correto hamburguer  */}
           <span className={styles.hamburgerLine}>---</span>
           <span className={styles.hamburgerLine}>---</span>
         </button>
@@ -44,17 +38,16 @@ const Navbar = ({ isLoggedIn, onLoginStatusChange }) => {
               <Link to="/protected/payment" className={styles.link} onClick={() => setIsMenuOpen(false)}>Pagamento</Link>
             </>
           )}
-          <button 
-            className={styles.signupBtn} 
+          <button
+            className={styles.signupBtn}
             onClick={isLoggedIn ? handleLogout : () => {
-              setShowAuth(true);
+              navigate('/login');
               setIsMenuOpen(false);
             }}
           >
             {isLoggedIn ? 'Logout' : 'Inscrever-se'}
           </button>
         </div>
-        {showAuth && <Auth onClose={() => setShowAuth(false)} onLoginStatusChange={onLoginStatusChange} />}
       </div>
     </nav>
   );

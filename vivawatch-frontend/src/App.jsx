@@ -9,7 +9,8 @@ import Footer from './components/Footer/Footer';
 import About from './components/About/About';
 import CustomerReviews from './components/CustomerReviews/CustomerReviews';
 import Timeline from './components/TimeLine/TimeLine';
-import Auth from './components/Auth/Auth';
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Support from './components/Support/Support';
 import Dashboard from './components/DashBoard/DashBoard';
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar isLoggedIn={isLoggedIn} onLoginStatusChange={handleLoginStatusChange} /> 
+      <Navbar isLoggedIn={isLoggedIn} onLoginStatusChange={handleLoginStatusChange} />
       <Routes>
         <Route
           path="/"
@@ -37,17 +38,14 @@ function App() {
               <CustomerReviews />
               <Cards />
               <Pricing isLoggedIn={isLoggedIn} />
-              <Support/>
+              <Support />
               <Footer />
             </>
           }
         />
-        <Route
-          path="/auth"
-          element={<Auth onClose={() => {}} onLoginStatusChange={handleLoginStatusChange} />}
-        />
+        <Route path="/login" element={<Login onLoginStatusChange={handleLoginStatusChange} />} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/protected" element={<PrivateRoute />}>
-          {/* Espaço para as rotas que vão ser protegidas*/}
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="payment" element={<Payment />} />
         </Route>
